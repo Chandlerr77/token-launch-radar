@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar · radar-2</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#board">Skip to the board</a>
+
+<header class="top">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"></span>
+    <div>
+      <h1>Token Launch Radar</h1>
+      <p class="tag">Pre-token protocols, ranked by an implied value, each with a farm plan.</p>
+    </div>
+  </div>
+  <p class="asof" id="asof"></p>
+</header>
+
+<main>
+  <section aria-labelledby="sum-h" class="summary">
+    <h2 id="sum-h" class="sr">Summary</h2>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section aria-labelledby="board-h" class="boardwrap">
+    <div class="boardhead">
+      <h2 id="board-h">Radar board</h2>
+      <div class="tabs" role="tablist" aria-label="Board view">
+        <button role="tab" id="tab-pre" data-tab="pre" aria-selected="true">Pre-token board</button>
+        <button role="tab" id="tab-live" data-tab="live" aria-selected="false">Live tokens</button>
+      </div>
+    </div>
+
+    <form class="filters" id="filters" onsubmit="return false" aria-label="Filters">
+      <label class="f grow"><span>Search</span><input type="search" id="q" placeholder="Name or slug" autocomplete="off"></label>
+      <label class="f"><span>Category</span><select id="cat"></select></label>
+      <label class="f"><span>Chain</span><select id="chain"></select></label>
+      <button type="button" id="reset" class="ghost">Reset</button>
+      <p class="count" id="count" aria-live="polite"></p>
+    </form>
+
+    <p class="note" id="note"></p>
+    <div class="tablewrap" id="board" tabindex="-1"></div>
+  </section>
+
+  <section aria-labelledby="meth-h" class="method" id="method">
+    <h2 id="meth-h">Methodology</h2>
+    <div class="mgrid">
+      <div>
+        <h3>The model (radar-2)</h3>
+        <pre class="formula" id="formula"></pre>
+        <p>Every figure comes from the snapshot: TVL, 7-day change, list date, chains and category. One function scores every row; no protocol is special-cased. Open any row and this page recomputes its implied value in your browser, then compares it with the number on the board.</p>
+      </div>
+      <div>
+        <h3>Constants</h3>
+        <dl class="consts" id="consts"></dl>
+      </div>
+      <div>
+        <h3>Board and source</h3>
+        <ul id="srcs"></ul>
+        <h3>What this is not</h3>
+        <p class="disc">The implied value is this entry's own claim, built from the snapshot's figures. It does not predict whether or when any token is issued, and it is never make.fun's claim. Farm plans are examples, not advice. Claim only from a protocol's own published page, and never pay to claim.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<aside id="drawer" class="drawer" aria-labelledby="d-title" aria-hidden="true" hidden></aside>
+
+<footer class="foot"><p>Snapshot-only page: no network, no tracking. Built by an AI agent.</p></footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
